@@ -17,13 +17,19 @@ function onFormSubmit(e) {
   e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
   console.log(formData);
+
+  if (formData.email === '' || formData.message === '') {
+    return alert('заповніть всю форму')
+  };
 }
 
 function onTextareaInput(e) {
+
   formData.email = input.value.trim();
   formData.message = textarea.value.trim();
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+ 
 }
 
 populateTextarea();
